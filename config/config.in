@@ -1,0 +1,11 @@
+
+mainmenu "Helios SDK Configuration"
+
+menu "System Configuration"
+source "../system/config.in"
+endmenu
+
+menu "EG915UEC_AC"
+source "../services/microPython/config/config.in"
+endmenu
+

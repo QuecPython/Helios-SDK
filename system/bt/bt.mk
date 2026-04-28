@@ -1,0 +1,3 @@
+NAME = BT
+
+GLOBAL_INCS = .

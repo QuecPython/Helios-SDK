@@ -1,0 +1,12 @@
+
+mainmenu "Helios SDK Configuration"
+
+menu "System Configuration"
+source "../system/config.in"
+endmenu
+
+menu "EC600UCN_LB"
+source "../services/microPython/config/config.in"
+source "../components/GMSSL/GMSSL.in"
+endmenu
+

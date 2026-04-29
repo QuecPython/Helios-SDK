@@ -140,7 +140,6 @@ def get_plat_by_board(board):
                 return k
         return ''
 def move_micropython_dependencies(app_entry):
-    def move_micropython_dependencies(app_entry):
     abs_path = os.getcwd()
     src_path = abs_path + '/tools/micropython/'
     dst_path = abs_path + '/../../'

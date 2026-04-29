@@ -140,14 +140,13 @@ def get_plat_by_board(board):
                 return k
         return ''
 def move_micropython_dependencies(app_entry):
-    if app_entry == 'services/microPython' or app_entry == 'services/micropython':
-        abs_path = os.getcwd()
-        src_path = abs_path + '/tools/micropython'
-        dst_path = abs_path + '/services/micropython'
-
-        shutil.copy(src_path + '/gen.sh', dst_path)
-        shutil.copy(src_path + '/micropython.mk', dst_path)
-        shutil.copy(src_path + '/private.mk', dst_path)
+    def move_micropython_dependencies(app_entry):
+    abs_path = os.getcwd()
+    src_path = abs_path + '/tools/micropython/'
+    dst_path = abs_path + '/../../'
+    shutil.copy(src_path + '/gen.sh', dst_path)
+    shutil.copy(src_path + '/micropython.mk', dst_path)
+    shutil.copy(src_path + '/private.mk', dst_path)
 
 def sdk_version_update(sdk_ver_update, abs_path, arg):
     version_x = "1"
@@ -307,8 +306,8 @@ def make_proc():
                     cmd_str = cmd_str + ' FW_NAME=' + arg
                     got_fw_name = True
                     
-    if got_fw_name:
-        sdk_version_update(sdk_ver_update, abs_path, arg)
+    # if got_fw_name:
+    #     sdk_version_update(sdk_ver_update, abs_path, arg)
         
     cmd_str = cmd_str + host_spec
     cmd_str = cmd_str + ' PY=' + argv[1]

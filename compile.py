@@ -21,10 +21,6 @@ def not_empty(s):
         return True
     return False
 
-def path_optimizer(comp_path):
-    app_path_split = comp_path.replace('\\', '/').split('/')
-    return '/'.join(list(filter(not_empty, app_path_split)))
-
 animation_idx = 0
 def wait_animation():
     global animation_idx
@@ -37,7 +33,6 @@ def wait_animation():
 def search_for_deps(comp_path):
     wait_animation()
     global dep_dict
-    comp_path = path_optimizer(comp_path)
     if comp_path in dep_dict:
         return
     
@@ -226,4 +221,4 @@ def build_proc(app):
     print('\n[starting compiling ...]\n', flush=True)
     compile_proc()
 
-build_proc(path_optimizer(sys.argv[1]))
+build_proc(sys.argv[1])

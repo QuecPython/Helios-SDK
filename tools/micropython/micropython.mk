@@ -2,7 +2,7 @@ NAME := MICROPYTHON
 
 include config/$(KCONFIG_CONFIG)
 
-$(NAME)_ARCHIVES = ports/quectel/build/firmware.a
+$(NAME)_ARCHIVES = ports/quectel/$(BUILD)/firmware.a
 
 
 $(NAME)_PRIVATE_SCRIPT = private.mk

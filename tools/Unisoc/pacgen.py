@@ -118,7 +118,7 @@ def ushort_hi(x: int):
 
 
 class CpioConfig():
-    ''' CPIO configuration. Internally, there is only a local -> remote
+    r''' CPIO configuration. Internally, there is only a local -> remote
         map. Local can be file or directory.
 
         Local path will be normalized:

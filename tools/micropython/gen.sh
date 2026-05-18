@@ -16,5 +16,5 @@ fi
 if [ "$1" = "clean" ]; then
     make -C ports/quectel --no-print-directory -f Makefile clean PYTHON=$py_cmd
 else
-    make -C ports/quectel --no-print-directory -f Makefile all PYTHON=$py_cmd -j8
+    make -C ports/quectel --no-print-directory -f Makefile local PYTHON=$py_cmd -j8
 fi

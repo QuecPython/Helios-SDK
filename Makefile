@@ -221,7 +221,7 @@ preaction:
 	@echo $(APP_ENTRY) > $(OUTPUT_TMP_PATH)/$(APP_RECORD_TMP_FILE)
 ifneq ($(READ_BOARD_RECORD_TMP_FILE), $(BOARD))
 ifneq ($(shell ls $(OUTPUT_TMP_PATH)/$(BOARD_RECORD_TMP_FILE) 2> /dev/null),)
-	@make --no-print-directory private_clean
+	@make --no-print-directory clean
 endif
 endif
 	@make --no-print-directory -f private_proc.mk APP_ENTRY=$(APP_ENTRY)

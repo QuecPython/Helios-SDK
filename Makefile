@@ -87,6 +87,8 @@ export APP_ENTRY :=
 
 export ROOT_PATH := ../
 
+export BUILD = build-$(BOARD)
+
 export OUTPUT_DIR := output
 export OUTPUT_TMP_DIR := tmp
 export OUTPUT_OBJ_DIR := obj
@@ -268,7 +270,7 @@ $(OUTPUT_PLAT_PRIVATE_CFG_FILE): $(PLAT_PRIVATE_CFG_FILE)
 	$(Q)$(CC) $(foreach inc, $(OUTPUT_SCRIPTS_INCS), -I$(inc)) $(CFLAGS) $(addprefix -D,$(DFLAGS)) -E -P -x c -MD -MT $@ -MF $@.d -o $@ -c $<
 	@echo ----- $@ updated
 
-end: $(OUTPUT_PLAT_PRIVATE_CFG_FILE)
+end: $(OUTPUT_PLAT_PRIVATE_CFG_FILE) exec
 ifneq ($(strip $(PLAT)),$(filter $(strip $(PLAT)),aic8800m40 SONY_ALT1350))
 	@make --no-print-directory -f $(PLAT_PRIVATE_MK_FILE)
 endif
@@ -288,7 +290,7 @@ endif
 #################################################################
 
 private_clean:
-	@make --no-print-directory -f private_proc.mk private_clean APP_ENTRY=$(strip $(READ_APP_RECORD_TMP_FILE))
+	@make --no-print-directory -f private_proc.mk private_clean APP_ENTRY=$(strip $(READ_APP_RECORD_TMP_FILE)) BOARD=$(strip $(READ_BOARD_RECORD_TMP_FILE))
 
 common_clean:
 	@echo ----- cleaning project target

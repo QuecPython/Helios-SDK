@@ -25,6 +25,7 @@ argv = sys.argv
 argc = len(argv)
 error_occurred = False
 
+build_log_dir = 'ports/quectel/build-'
 build_log_file = 'build.log'
 platform_json = 'system/platform/platform.json'
 

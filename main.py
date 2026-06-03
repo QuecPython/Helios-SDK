@@ -25,7 +25,6 @@ argv = sys.argv
 argc = len(argv)
 error_occurred = False
 
-build_log_dir = 'output/log'
 build_log_file = 'build.log'
 platform_json = 'system/platform/platform.json'
 
@@ -307,13 +306,9 @@ def make_proc():
                     
     # if got_fw_name:
     #     sdk_version_update(sdk_ver_update, abs_path, arg)
-        
     cmd_str = cmd_str + host_spec
     cmd_str = cmd_str + ' PY=' + argv[1]
-    cmd_str = cmd_str + ' 2>&1 | tee ' + build_log_dir + '/' + build_log_file
-
-    if not os.path.exists(build_log_dir):
-        os.makedirs(build_log_dir)
+    cmd_str = cmd_str + ' 2>&1 | tee ' + app_entry + build_log_dir + arg + '/' + build_log_file
 
     move_micropython_dependencies(app_entry)
     os.system(cmd_str)

@@ -16,7 +16,7 @@ export HOST
 export PY
 
 export PLAT = Unisoc
-export BOARD = EC200UEU_AA
+export BOARD
 
 
 
@@ -84,12 +84,11 @@ endif
 #################################################################
 
 export APP_ENTRY := 
-
 export ROOT_PATH := ../
-
 export BUILD = build-$(BOARD)
+export BUILD_DIR = ports/quectel/$(BUILD)
 
-export OUTPUT_DIR := output
+export OUTPUT_DIR := $(APP_ENTRY)/$(BUILD_DIR)
 export OUTPUT_TMP_DIR := tmp
 export OUTPUT_OBJ_DIR := obj
 export OUTPUT_BIN_DIR := bin
@@ -320,7 +319,7 @@ endef
 else
 
 # Get helios version
-ifeq ($(shell type -P helios),)
+ifeq ($(shell type helios),)
     HELIOS_VERSION :=
 else
     HELIOS_VERSION := $(shell helios --version | grep -Po 'Helios \(released by Quectel\) \K[^\s]+')

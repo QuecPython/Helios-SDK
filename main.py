@@ -309,7 +309,7 @@ def make_proc():
     #     sdk_version_update(sdk_ver_update, abs_path, arg)
     cmd_str = cmd_str + host_spec
     cmd_str = cmd_str + ' PY=' + argv[1]
-    cmd_str = cmd_str + ' 2>&1 | tee ' + app_entry + build_log_dir + arg + '/' + build_log_file
+    cmd_str = cmd_str + ' 2>&1 | tee ' + app_entry + '/' + build_log_dir + arg + '/' + build_log_file
 
     move_micropython_dependencies(app_entry)
     os.system(cmd_str)

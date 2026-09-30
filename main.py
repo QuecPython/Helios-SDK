@@ -116,10 +116,6 @@ def clean_proc():
     if os.path.exists("output\\tmp\\app_record.tmp"):
         with open("output\\tmp\\app_record.tmp", 'r', encoding='utf-8') as tmp_app_entry_file:
             old_app_entry_str = (tmp_app_entry_file.read()).strip()
-            if old_app_entry_str == "services/microPython" or old_app_entry_str == "services/micropython":
-                if not os.path.exists("services\\microPython\\microPython.mk"):
-                    print("!!!Warning!!! Micropython makefile has been deleted, try to fix it !!!")
-                    move_micropython_dependencies(old_app_entry_str)
     cmd_str = 'make clean PY=' + argv[1]
     os.system(cmd_str)
 
@@ -139,13 +135,6 @@ def get_plat_by_board(board):
             if board in v:
                 return k
         return ''
-def move_micropython_dependencies(app_entry):
-    abs_path = os.getcwd()
-    src_path = abs_path + '/tools/micropython/'
-    dst_path = abs_path + '/../../'
-    shutil.copy(src_path + '/gen.sh', dst_path)
-    shutil.copy(src_path + '/micropython.mk', dst_path)
-    shutil.copy(src_path + '/private.mk', dst_path)
 
 def sdk_version_update(sdk_ver_update, abs_path, arg):
     version_x = "1"
@@ -311,7 +300,6 @@ def make_proc():
     cmd_str = cmd_str + ' PY=' + argv[1]
     cmd_str = cmd_str + ' 2>&1 | tee ' + app_entry + '/' + build_log_dir + arg + '/' + build_log_file
 
-    move_micropython_dependencies(app_entry)
     os.system(cmd_str)
 
 # flash cmd process

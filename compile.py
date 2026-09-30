@@ -35,8 +35,10 @@ def search_for_deps(comp_path):
     global dep_dict
     if comp_path in dep_dict:
         return
-    
-    comp_mk = comp_path + '/' + comp_path.split('/')[-1] + '.mk'
+    if comp_path.split('/')[-1] == 'micropython':
+        comp_mk = './micropython.mk'
+    else:
+        comp_mk = comp_path + '/' + comp_path.split('/')[-1] + '.mk'
     cmd = 'make --no-print-directory -f comp_info_tell.mk' + ' COMP_MK=' + comp_mk
     res = os.popen(cmd)
     ret = res.buffer.read().decode(encoding='utf-8')

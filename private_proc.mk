@@ -16,14 +16,14 @@ ifneq ($(APP_ENTRY),)
 
 make_mk_fnc = $(1)/$(notdir $(1)).mk
 
-APP_MK = $(call make_mk_fnc, $(APP_ENTRY))
+APP_MK = micropython.mk
 include $(APP_MK)
 
 APP_PRIVATE_MK = $($(NAME)_PRIVATE_SCRIPT)
 
 define RULES
 $(1):
-	@make -C $(APP_ENTRY) --no-print-directory -f $(APP_PRIVATE_MK) $(1)
+	@make -C $(APP_ENTRY)/ports/quectel --no-print-directory local
 endef
 
 $(foreach target, $($(NAME)_PRIVATE_SCRIPT_TARGETS), $(eval $(call RULES, $(target))))
